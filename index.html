@@ -923,8 +923,10 @@ function paymentAmount(personId,periodId){return state.payments.filter(x=>x.pers
 function protectedPayment(payment){return !!payment.registryId||String(payment.author||'').startsWith('Шеф')||String(payment.source||'').startsWith('Подотчёт №')}
 function replaceEditablePayment(personId,period,desiredAmount){const related=state.payments.filter(x=>x.personId===personId&&x.periodId===period.id),protectedAmount=related.filter(protectedPayment).reduce((n,x)=>n+Number(x.amount||0),0);if(desiredAmount<protectedAmount)return {ok:false,protectedAmount};state.payments=state.payments.filter(x=>!(x.personId===personId&&x.periodId===period.id&&!protectedPayment(x)));const editableAmount=desiredAmount-protectedAmount;if(editableAmount>0)state.payments.unshift({id:nextId(),date:period.to,personId,periodId:period.id,type:period.type,amount:editableAmount,author:'Бухгалтер',source:periodLabel(period),status:'Проведено'});return {ok:true,protectedAmount}}
 function paymentPeriodInCurrentMonth(period){return (period.accountingMonth||monthKeyFromRuDate(period.to)||monthKeyFromRuDate(period.from))===currentAccountingMonthKey()}
+function paymentPeriodInCurrentPeriod(period){const from=ruToIso(period.from),to=ruToIso(period.to);return !!from&&!!to&&from<=currentPeriodTo&&to>=currentPeriodFrom}
 function ensureOperationalPaymentPeriod(type,date){const month=monthKeyFromRuDate(date)||currentAccountingMonthKey();let period=state.paymentPeriods.find(x=>!x.registryId&&x.type===type&&(x.accountingMonth||monthKeyFromRuDate(x.to))===month&&dateInRuRange(date,x.from,x.to));if(!period){period={id:nextId(),type,from:date,to:date,accountingMonth:month,locked:true,visible:true,operational:true};state.paymentPeriods.push(period)}return period}
-function periodPaid(personId){return state.paymentPeriods.filter(paymentPeriodInCurrentMonth).reduce((n,p)=>n+paymentAmount(personId,p.id),0)}
+function periodPaid(personId){return state.paymentPeriods.filter(paymentPeriodInCurrentPeriod).reduce((n,p)=>n+paymentAmount(personId,p.id),0)}
+function monthPaid(personId){return state.paymentPeriods.filter(paymentPeriodInCurrentMonth).reduce((n,p)=>n+paymentAmount(personId,p.id),0)}
 function registryPaymentType(registry){return registry.engagement==='Наличные'?'Подотчётные':registry.engagement==='ТК'?'ЗП':'СЗ'}
 function registryItems(registry){if(Array.isArray(registry.items)&&registry.items.length)return registry.items.map(x=>({personId:Number(x.personId),amount:Number(x.amount)||0}));const source=`Ведомость №${registry.id}`;return (registry.people||[]).map(personId=>{const existing=state.payments.find(x=>x.personId===Number(personId)&&(x.registryId===registry.id||x.source===source));return {personId:Number(personId),amount:existing?Number(existing.amount)||0:Math.max(0,personWeek(person(Number(personId))).balance)}})}
 function ensureRegistryPeriod(registry){const type=registryPaymentType(registry),from=registry.from||isoToRu(currentPeriodFrom),to=registry.to||isoToRu(currentPeriodTo);let period=state.paymentPeriods.find(x=>x.id===Number(registry.paymentPeriodId));if(!period){period={id:nextId(),type,from,to,accountingMonth:registry.accountingMonth||monthKeyFromRuDate(to)||currentAccountingMonthKey(),registryId:registry.id,locked:true,visible:true};state.paymentPeriods.push(period)}period.locked=true;period.visible=true;period.registryId=registry.id;registry.paymentPeriodId=period.id;registry.from=from;registry.to=to;registry.accountingMonth=period.accountingMonth;return period}
@@ -2227,6 +2229,7 @@ render();
       return samePerson && sameType && sameMonth && sameLocation;
     }).reduce((sum, adjustment) => sum + Number(adjustment.amount || 0), 0);
     const total = base + row.taxi + row.bonus - salaryPenalty;
+    const paid = monthPaid(personRecord.id);
 
     return {
       ...row,
@@ -2235,7 +2238,8 @@ render();
       base,
       penalty: salaryPenalty,
       total,
-      balance: total - row.paid,
+      paid,
+      balance: total - paid,
       salaryBase,
       salaryNormHours: normHours,
       salaryOvertimeRate: overtimeRate,
