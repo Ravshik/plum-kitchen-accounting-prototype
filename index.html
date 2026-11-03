@@ -722,6 +722,10 @@ button,input,select,textarea{font:inherit;color:inherit} button{cursor:pointer}
   }
 }
 
+/* Accountable funds */
+.accountable-title{align-items:flex-start}.accountable-title p{margin:7px 0 0;color:var(--muted);font-size:13px}.accountable-role-badge{padding:9px 13px;border-radius:12px;background:#eeeefe;color:var(--violet);font-weight:700}.accountable-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}.accountable-summary>div{min-height:90px;padding:17px 18px;background:#fff;border:1px solid var(--line);border-radius:15px;display:flex;flex-direction:column;gap:7px}.accountable-summary span{font-size:12px;color:#69799a}.accountable-summary b{font-size:22px;color:#13213f}.accountable-summary small{font-size:11px;color:#91a0bd}.accountable-summary .overspent{background:#fff7f7;border-color:#ffcaca}.accountable-summary .overspent b,.accountable-summary .overspent small{color:#d63a4e}.accountable-help{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:12px 15px;margin-bottom:13px;background:#f6f6ff;border:1px solid #e3e2ff;border-radius:13px;color:#69779a;font-size:12px}.accountable-help b{color:#3e49b7}.accountable-help span:before{content:'✓';margin-right:6px;color:#22a875;font-weight:800}.accountable-list{display:grid;gap:14px}.accountable-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.accountable-card.overspent{border-color:#ffb7c0;box-shadow:0 0 0 2px rgba(214,58,78,.04)}.accountable-card-head{display:flex;justify-content:space-between;gap:20px;padding:18px 20px 13px}.accountable-card-head h2{font-size:19px;margin:9px 0 5px}.accountable-card-head p{margin:0;color:#7b89a6;font-size:12px}.accountable-card-status{min-width:155px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px}.accountable-card-status>b{font-size:22px;color:#14223f}.accountable-card-status small{color:#8c9ab7;font-size:11px}.accountable-card-metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #edf0f7;border-bottom:1px solid #edf0f7;background:#fbfcff}.accountable-card-metrics>span{padding:14px 18px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #edf0f7}.accountable-card-metrics>span:last-child{border-right:0}.accountable-card-metrics small{font-size:11px;color:#8390aa}.accountable-card-metrics b{font-size:16px}.accountable-card-metrics em{font-style:normal;font-size:10px;color:#91a0b9}.accountable-actions{display:flex;align-items:center;gap:8px;padding:12px 18px}.accountable-actions>span{margin-left:auto;color:#8c99b4;font-size:11px}.accountable-location-table{border-top:1px solid #edf0f7}.accountable-location-head,.accountable-location-row>summary{display:grid;grid-template-columns:minmax(230px,1.4fr) repeat(4,minmax(105px,.65fr));align-items:center;gap:12px;padding:11px 18px}.accountable-location-head{background:#f7f8fc;color:#7483a2;font-size:11px;font-weight:700}.accountable-location-row{border-top:1px solid #edf0f7}.accountable-location-row>summary{cursor:pointer;list-style:none;font-size:12px}.accountable-location-row>summary::-webkit-details-marker{display:none}.accountable-location-row>summary:hover{background:#fafaff}.accountable-location-row>summary>span:first-child{display:flex;flex-direction:column;gap:3px}.accountable-location-row>summary small{color:#95a2bb;font-size:10px}.accountable-location-row.overspent>summary{background:#fff8f8}.accountable-expense-list{padding:0 18px 12px;background:#fbfcff}.accountable-expense-row{display:grid;grid-template-columns:minmax(230px,1.4fr) repeat(5,minmax(95px,.65fr));gap:12px;align-items:center;padding:11px 0;border-top:1px dashed #dfe4ef;font-size:11px}.accountable-expense-row>span{display:flex;flex-direction:column;gap:3px}.accountable-expense-row small{color:#8b99b5}.accountable-expense-row strong{color:#0a9f6d}.accountable-empty-expenses,.accountable-no-allocation{padding:24px;text-align:center;color:#8d9ab5;font-size:12px}.accountable-unallocated{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#fffbea;border-top:1px solid #f3e8b3}.accountable-unallocated span{display:flex;flex-direction:column;gap:3px}.accountable-unallocated small{color:#9a8d56;font-size:10px}.accountable-unallocated strong{color:#9c7610}.accountable-closing{display:flex;gap:22px;flex-wrap:wrap;padding:13px 18px;background:#f2faf6;border-top:1px solid #d7eee2;color:#60786d;font-size:11px}.accountable-modal-summary{padding:14px;border:1px solid #deddfd;border-radius:13px;background:#f6f6ff;display:grid;grid-template-columns:1fr auto;align-items:center}.accountable-modal-summary>b{font-size:20px;color:#3f43b8}.accountable-modal-summary small{grid-column:1/-1;margin-top:5px}.negative{color:#d63a4e!important}
+@media(max-width:1200px){.accountable-summary{grid-template-columns:repeat(2,1fr)}.accountable-card-metrics{grid-template-columns:repeat(2,1fr)}.accountable-location-head,.accountable-location-row>summary{grid-template-columns:minmax(180px,1.2fr) repeat(4,minmax(90px,.7fr))}.accountable-expense-row{grid-template-columns:1.4fr repeat(2,.7fr)}.accountable-expense-row>span:nth-child(n+4){display:none}}
+
   </style>
   <meta name="generator" content="PLUM standalone prototype">
 </head>
@@ -759,6 +763,7 @@ button,input,select,textarea{font:inherit;color:inherit} button{cursor:pointer}
         <label class="role-select">Роль
           <select id="role-select">
             <option>Бухгалтер</option>
+            <option>Бренд-шеф</option>
             <option>Шеф</option>
             <option>Охрана</option>
           </select>
@@ -954,7 +959,7 @@ function empty(title,text,button=''){return `<div class="empty"><div class="empt
 function options(items,value,label=x=>x){return items.map(x=>`<option ${String(value)===String(x.id??x)?'selected':''} value="${x.id??x}">${label(x)}</option>`).join('')}
 
 function modeLabel(short=false){if(state.mode==='demo100')return short?'ДЕМО 100':'ДЕМО · 100 ЧЕЛОВЕК';if(state.mode==='demo')return short?'ДЕМО':'ДЕМО-ДАННЫЕ';return short?'УЧЕБНАЯ БАЗА':'ПУСТАЯ БАЗА'}
-function render(){const tabs=document.querySelector('.module-tabs'),head=document.querySelector('.module-head'),hubMode=currentRole==='Бухгалтер'&&currentPage==='hub';document.querySelector('#role-select').value=currentRole;document.querySelector('#mode-badge').textContent=modeLabel();tabs.classList.toggle('role-mode',currentRole!=='Бухгалтер');tabs.classList.toggle('hidden',hubMode);head.classList.toggle('hub-head',hubMode);if(currentRole==='Охрана')root.innerHTML=securityPage();else if(currentRole==='Шеф')root.innerHTML=chefPage();else root.innerHTML=({hub:accountingHub,timesheet:timesheetPage,advances:advancesPage,reports:reportsPage}[currentPage]||accountingHub)();document.querySelector('#crumb-current').textContent=currentRole==='Бухгалтер'?(pageNames[currentPage]||'Направления'):currentRole;document.querySelectorAll('.module-tab').forEach(b=>b.classList.toggle('active',currentRole==='Бухгалтер'&&b.dataset.page===currentPage));bindPage()}
+function render(){const tabs=document.querySelector('.module-tabs'),head=document.querySelector('.module-head'),hubMode=currentRole==='Бухгалтер'&&currentPage==='hub';document.querySelector('#role-select').value=currentRole;document.querySelector('#mode-badge').textContent=modeLabel();tabs.classList.toggle('role-mode',currentRole!=='Бухгалтер');tabs.classList.toggle('hidden',hubMode);head.classList.toggle('hub-head',hubMode);if(currentRole==='Охрана')root.innerHTML=securityPage();else if(currentRole==='Шеф')root.innerHTML=chefPage();else if(currentRole==='Бренд-шеф'){currentPage='advances';root.innerHTML=advancesPage()}else root.innerHTML=({hub:accountingHub,timesheet:timesheetPage,advances:advancesPage,reports:reportsPage}[currentPage]||accountingHub)();document.querySelector('#crumb-current').textContent=currentRole==='Бухгалтер'?(pageNames[currentPage]||'Направления'):currentRole;document.querySelectorAll('.module-tab').forEach(b=>b.classList.toggle('active',currentRole==='Бухгалтер'&&b.dataset.page===currentPage));bindPage()}
 function switchRole(role){currentRole=role;render()}
 function workflow(step){return `<div class="workflow-banner" aria-label="Этапы процесса"><button class="${step===1?'active':''}" onclick="switchRole('Охрана')">1 · Охрана</button><button class="${step===2?'active':''}" onclick="switchRole('Шеф')">2 · Шеф</button><button class="${step===3?'active':''}" onclick="switchRole('Бухгалтер')">3 · Бухгалтерия</button></div>`}
 function accountingHub(){const openCount=state.shifts.filter(s=>!s.exit).length,peopleCount=state.people.length,month=periodMonth(),cards=[
@@ -1097,7 +1102,7 @@ function bindPage(){
 }
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{currentRole='Бухгалтер';document.querySelector('#role-select').value=currentRole;currentPage=b.dataset.page;render()});
 document.querySelectorAll('[data-toast]').forEach(b=>b.onclick=()=>toast(b.dataset.toast));
-document.querySelector('#role-select').onchange=e=>{currentRole=e.target.value;render();toast(`Роль: ${currentRole}`)};
+document.querySelector('#role-select').onchange=e=>{currentRole=e.target.value;if(currentRole==='Бренд-шеф')currentPage='advances';render();toast(`Роль: ${currentRole}`)};
 document.querySelector('#settings-button').onclick=settings;
 document.querySelector('#drawer-backdrop').onclick=closeDrawer;document.querySelector('#modal-backdrop').onclick=closeModal;
 document.addEventListener('click',event=>{const button=event.target.closest('[data-action="chef-callout"],[data-action="chef-pay"]');if(!button)return;event.preventDefault();event.stopImmediatePropagation();const shift=state.shifts.find(item=>item.id===Number(button.dataset.id));if(!shift){toast('Смена не найдена');return}openChefCalloutModal(shift,button.dataset.action)},true);
@@ -4586,6 +4591,277 @@ render();
   };
 
   render();
+})();
+
+    </script>
+    <script>
+/* Accountable funds issued to brand chef Sergey Eremin and automatically spent by callout shifts. */
+(function accountableFundsModule() {
+  const RECIPIENT = 'Ерёмин Сергей';
+
+  function ensureStore() {
+    if (!Array.isArray(state.accountableFunds)) state.accountableFunds = [];
+  }
+
+  function esc(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function iso(value) {
+    const text = String(value || '');
+    return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : ruToIso(text);
+  }
+
+  function addDays(value, days) {
+    const date = new Date(`${value}T12:00:00`);
+    date.setDate(date.getDate() + days);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
+
+  function available(fund) {
+    return Number(fund.issued || 0) + Number(fund.carryIn || 0) + (fund.topUps || []).reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  }
+
+  function fundExpenses(fund) {
+    const from = iso(fund.from);
+    const to = iso(fund.to);
+    return state.shifts
+      .filter(shift => shift.type === 'Вызывной' && Number(shift.paid) > 0 && iso(shift.date) >= from && iso(shift.date) <= to)
+      .map(shift => {
+        const payment = state.payments.find(item => item.shiftId === shift.id && item.type === 'Выплата вызывному после смены');
+        return {
+          shift,
+          payment,
+          location: shift.location || 'Площадка не указана',
+          amount: Number(shift.paid || 0),
+          work: Number(rateOf(shift) || 0) * Number(hours(shift) || 0),
+          taxi: Number(shift.taxi || 0),
+          penalty: Number(shift.penalty || 0)
+        };
+      })
+      .sort((a, b) => iso(b.shift.date).localeCompare(iso(a.shift.date)) || b.shift.id - a.shift.id);
+  }
+
+  function allocated(fund) {
+    return Object.values(fund.allocations || {}).reduce((sum, amount) => sum + Number(amount || 0), 0);
+  }
+
+  function spent(fund) {
+    return fundExpenses(fund).reduce((sum, expense) => sum + expense.amount, 0);
+  }
+
+  function openBalance(fund) {
+    return available(fund) - spent(fund);
+  }
+
+  function finalBalance(fund) {
+    return openBalance(fund) - Number(fund.closing?.returned || 0) - Number(fund.closing?.carried || 0);
+  }
+
+  function fundStatus(fund) {
+    if (fund.closed) return Math.abs(finalBalance(fund)) < 0.01 ? 'Закрыт' : 'Изменён после закрытия';
+    if (openBalance(fund) < 0) return 'Перерасход';
+    if (locationRows(fund).some(row => row.balance < 0)) return 'Перерасход на лофте';
+    if (!allocated(fund)) return 'Ожидает распределения';
+    if (allocated(fund) < available(fund)) return 'Частично распределён';
+    return 'В работе';
+  }
+
+  function statusTone(text) {
+    if (text === 'Закрыт') return 'good';
+    if (text.includes('Перерасход') || text === 'Изменён после закрытия') return 'bad';
+    return 'warn';
+  }
+
+  function locationRows(fund) {
+    const expenses = fundExpenses(fund);
+    const names = new Set([...Object.keys(fund.allocations || {}), ...expenses.map(item => item.location)]);
+    return [...names]
+      .filter(name => Number(fund.allocations?.[name] || 0) || expenses.some(item => item.location === name))
+      .sort((a, b) => a.localeCompare(b, 'ru'))
+      .map(name => {
+        const limit = Number(fund.allocations?.[name] || 0);
+        const items = expenses.filter(item => item.location === name);
+        const used = items.reduce((sum, item) => sum + item.amount, 0);
+        return { name, limit, items, used, balance: limit - used };
+      });
+  }
+
+  function expenseDetails(items) {
+    if (!items.length) return '<div class="accountable-empty-expenses">Выплат вызывным пока нет</div>';
+    return `<div class="accountable-expense-list">${items.map(item => `<div class="accountable-expense-row">
+      <span><b>${esc(person(item.shift.personId).name)}</b><small>${esc(item.shift.date)} · ${esc(item.shift.workStart || item.shift.entry)}–${esc(item.shift.workEnd || item.shift.exit || '…')} · ${Number(hours(item.shift) || 0).toLocaleString('ru-RU')} ч</small></span>
+      <span><small>Работа</small><b>${money(item.work)}</b></span>
+      <span><small>Такси</small><b>${money(item.taxi)}</b></span>
+      <span><small>Штраф</small><b>${item.penalty ? `−${money(item.penalty)}` : money(0)}</b></span>
+      <span><small>Фактически выдано</small><strong>${money(item.amount)}</strong></span>
+      <span><small>Внёс</small><b>${esc(item.payment?.author || 'Шеф')}</b></span>
+    </div>`).join('')}</div>`;
+  }
+
+  function fundCard(fund) {
+    const totalAvailable = available(fund);
+    const totalAllocated = allocated(fund);
+    const totalSpent = spent(fund);
+    const balance = openBalance(fund);
+    const fundState = fundStatus(fund);
+    const rows = locationRows(fund);
+    const isBrandChef = currentRole === 'Бренд-шеф';
+    const isAccounting = currentRole === 'Бухгалтер';
+    const unallocated = totalAvailable - totalAllocated;
+    const hasLocationOverspend = rows.some(row => row.balance < 0);
+    return `<article class="accountable-card ${balance < 0 || hasLocationOverspend ? 'overspent' : ''}">
+      <div class="accountable-card-head">
+        <div><span class="tag green">Подотчёт №${fund.id}</span><h2>${esc(fund.recipient || RECIPIENT)}</h2><p>${esc(isoToRu(fund.from))}–${esc(isoToRu(fund.to))}${fund.comment ? ` · ${esc(fund.comment)}` : ''}</p></div>
+        <div class="accountable-card-status">${status(fundState, statusTone(fundState))}<b class="${balance < 0 ? 'negative' : ''}">${money(balance)}</b><small>остаток у Сергея</small></div>
+      </div>
+      <div class="accountable-card-metrics">
+        <span><small>Доступно</small><b>${money(totalAvailable)}</b>${fund.carryIn ? `<em>включая перенос ${money(fund.carryIn)}</em>` : ''}</span>
+        <span><small>Распределено</small><b>${money(totalAllocated)}</b><em class="${unallocated < 0 ? 'negative' : ''}">не распределено ${money(unallocated)}</em></span>
+        <span><small>Выплачено вызывным</small><b>${money(totalSpent)}</b><em>${fundExpenses(fund).length} операций</em></span>
+        <span><small>Период</small><b>${esc(isoToRu(fund.from))}–${esc(isoToRu(fund.to))}</b><em>${fund.closed ? 'закрыт' : 'активен'}</em></span>
+      </div>
+      <div class="accountable-actions">
+        ${isBrandChef && !fund.closed ? `<button class="btn primary" data-accountable-action="allocate" data-id="${fund.id}">Распределить по лофтам</button>` : ''}
+        ${isAccounting && !fund.closed ? `<button class="btn" data-accountable-action="topup" data-id="${fund.id}">+ Пополнить</button><button class="btn" data-accountable-action="close" data-id="${fund.id}">Закрыть период</button>` : ''}
+        <span>${isBrandChef ? 'Распределение выполняет бренд-шеф' : 'Расходы появляются автоматически из выплат шефов'}</span>
+      </div>
+      <div class="accountable-location-table">
+        <div class="accountable-location-head"><span>Лофт</span><span>Выделено</span><span>Выплачено</span><span>Остаток</span><span>Состояние</span></div>
+        ${rows.length ? rows.map(row => `<details class="accountable-location-row ${row.balance < 0 ? 'overspent' : ''}">
+          <summary><span><b>${esc(row.name)}</b><small>${row.items.length} выплат</small></span><span>${money(row.limit)}</span><span>${money(row.used)}</span><span class="${row.balance < 0 ? 'negative' : ''}">${money(row.balance)}</span><span>${row.balance < 0 ? status('Перерасход', 'bad') : status(row.used ? 'В работе' : 'Средства выделены', row.used ? 'good' : 'warn')}</span></summary>
+          ${expenseDetails(row.items)}
+        </details>`).join('') : '<div class="accountable-no-allocation">Сергей ещё не распределил сумму по лофтам.</div>'}
+        ${unallocated > 0 ? `<div class="accountable-unallocated"><span><b>Не распределено</b><small>Остаётся у Сергея</small></span><strong>${money(unallocated)}</strong></div>` : ''}
+      </div>
+      ${fund.closed ? `<div class="accountable-closing"><span>Возвращено бухгалтерии: <b>${money(fund.closing?.returned || 0)}</b></span><span>Перенесено: <b>${money(fund.closing?.carried || 0)}</b></span><span>Закрыл: <b>${esc(fund.closing?.author || 'Бухгалтер')}</b></span></div>` : ''}
+    </article>`;
+  }
+
+  advancesPage = function () {
+    ensureStore();
+    const funds = state.accountableFunds.slice().sort((a, b) => b.id - a.id);
+    const active = funds.filter(fund => !fund.closed);
+    const totalAvailable = active.reduce((sum, fund) => sum + available(fund), 0);
+    const totalAllocated = active.reduce((sum, fund) => sum + allocated(fund), 0);
+    const totalSpent = active.reduce((sum, fund) => sum + spent(fund), 0);
+    const totalBalance = totalAvailable - totalSpent;
+    const isAccounting = currentRole === 'Бухгалтер';
+    return `<div class="page-title-row accountable-title"><div>${isAccounting ? kitchenBack() : ''}<div class="eyebrow">Кухня · движение подотчётных средств</div><h1 class="page-title">Подотчёты Сергея Ерёмина</h1><p>Шефы фиксируют выплаты вызывным в табеле — расходы появляются здесь автоматически.</p></div>${isAccounting ? '<button class="btn primary" data-accountable-action="issue">+ Выдать подотчёт</button>' : '<span class="accountable-role-badge">Роль: бренд-шеф</span>'}</div>
+      <div class="accountable-summary">
+        <div><span>Активных подотчётов</span><b>${active.length}</b><small>${funds.length} всего</small></div>
+        <div><span>Доступно</span><b>${money(totalAvailable)}</b><small>выдачи и переносы</small></div>
+        <div><span>Распределено</span><b>${money(totalAllocated)}</b><small>по лофтам</small></div>
+        <div><span>Выплачено вызывным</span><b>${money(totalSpent)}</b><small>из данных шефов</small></div>
+        <div class="${totalBalance < 0 ? 'overspent' : ''}"><span>Остаток</span><b>${money(totalBalance)}</b><small>${totalBalance < 0 ? 'есть перерасход' : 'у Сергея'}</small></div>
+      </div>
+      <div class="accountable-help"><b>Как считается:</b><span>распределение не списывает деньги</span><span>фактически выплачено вызывному уменьшает остаток</span><span>перерасход разрешён и подсвечивается красным</span></div>
+      <section class="accountable-list">${funds.length ? funds.map(fundCard).join('') : empty('Подотчётов пока нет', 'Бухгалтерия выдаёт сумму Сергею Ерёмину, после чего он распределяет её по лофтам.')}</section>`;
+  };
+
+  function issueFund() {
+    openModal('Выдать подотчёт Сергею Ерёмину',
+      field('Получатель', 'recipient', RECIPIENT) +
+      field('Дата выдачи', 'issuedAt', today(), 'date') +
+      field('Начало периода', 'from', currentPeriodFrom, 'date') +
+      field('Конец периода', 'to', currentPeriodTo, 'date') +
+      field('Сумма', 'amount', '', 'number') +
+      field('Комментарий', 'comment', '', 'text', true) +
+      '<div class="field full rate-hint">После выдачи Сергей самостоятельно распределит сумму по лофтам. Расходы подтянутся из выплат вызывным сотрудникам.</div>',
+      'Выдать подотчёт', data => {
+        const amount = Number(data.amount);
+        if (!(amount > 0)) { toast('Введите сумму подотчёта'); return false; }
+        if (!data.from || !data.to || data.from > data.to) { toast('Проверьте период'); return false; }
+        const overlaps = state.accountableFunds.some(fund => !fund.closed && iso(fund.from) <= data.to && iso(fund.to) >= data.from);
+        if (overlaps) { toast('На выбранные даты уже есть активный подотчёт. Используйте пополнение.'); return false; }
+        const fund = { id: nextId(), recipient: RECIPIENT, issuedAt: data.issuedAt, from: data.from, to: data.to, issued: amount, carryIn: 0, allocations: {}, topUps: [], comment: data.comment.trim(), createdBy: 'Бухгалтер', createdAt: new Date().toLocaleString('ru-RU'), closed: false };
+        state.accountableFunds.unshift(fund);
+        state.audit.unshift({ at: fund.createdAt, actor: 'Бухгалтер', text: `Выдан подотчёт №${fund.id} ${money(amount)} Сергею Ерёмину · ${isoToRu(data.from)}–${isoToRu(data.to)}` });
+      });
+  }
+
+  function allocateFund(fund) {
+    const locations = Object.keys(LOCATIONS);
+    openModal(`Распределить подотчёт №${fund.id}`,
+      `<div class="field full accountable-modal-summary"><span>Доступно</span><b>${money(available(fund))}</b><small>Можно оставить часть суммы нераспределённой.</small></div>` +
+      locations.map((location, index) => field(location, `location_${index}`, Number(fund.allocations?.[location] || 0), 'number')).join(''),
+      'Сохранить распределение', data => {
+        const allocations = {};
+        locations.forEach((location, index) => {
+          const amount = Number(data[`location_${index}`] || 0);
+          if (amount > 0) allocations[location] = amount;
+        });
+        const total = Object.values(allocations).reduce((sum, amount) => sum + amount, 0);
+        if (Object.values(allocations).some(amount => !Number.isFinite(amount) || amount < 0)) { toast('Проверьте суммы по лофтам'); return false; }
+        if (total > available(fund)) { toast(`Распределено больше доступной суммы на ${money(total - available(fund))}`); return false; }
+        fund.allocations = allocations;
+        fund.distributedAt = new Date().toLocaleString('ru-RU');
+        fund.distributedBy = RECIPIENT;
+        state.audit.unshift({ at: fund.distributedAt, actor: `Бренд-шеф · ${RECIPIENT}`, text: `Подотчёт №${fund.id} распределён по лофтам: ${money(total)}` });
+      });
+  }
+
+  function topUpFund(fund) {
+    openModal(`Пополнить подотчёт №${fund.id}`,
+      field('Получатель', 'recipient', RECIPIENT) + field('Дата', 'date', today(), 'date') + field('Сумма пополнения', 'amount', '', 'number') + field('Комментарий', 'comment', '', 'text', true),
+      'Пополнить', data => {
+        const amount = Number(data.amount);
+        if (!(amount > 0)) { toast('Введите сумму пополнения'); return false; }
+        fund.topUps = fund.topUps || [];
+        fund.topUps.push({ id: nextId(), date: data.date, amount, comment: data.comment.trim(), author: 'Бухгалтер' });
+        state.audit.unshift({ at: new Date().toLocaleString('ru-RU'), actor: 'Бухгалтер', text: `Подотчёт №${fund.id} пополнен на ${money(amount)}` });
+      });
+  }
+
+  function closeFund(fund) {
+    const balance = openBalance(fund);
+    if (balance < 0) { toast(`Нельзя закрыть подотчёт с перерасходом ${money(Math.abs(balance))}. Сначала пополните его.`); return; }
+    const nextFrom = addDays(iso(fund.to), 1);
+    const nextTo = addDays(nextFrom, 6);
+    openModal(`Закрыть подотчёт №${fund.id}`,
+      `<div class="field full accountable-modal-summary"><span>Остаток к закрытию</span><b>${money(balance)}</b><small>Разделите остаток между возвратом и переносом.</small></div>` +
+      field('Вернуть бухгалтерии', 'returned', balance, 'number') +
+      field('Перенести в следующий период', 'carried', 0, 'number') +
+      field('Начало следующего периода', 'nextFrom', nextFrom, 'date') +
+      field('Конец следующего периода', 'nextTo', nextTo, 'date') +
+      field('Комментарий', 'comment', '', 'text', true),
+      'Закрыть период', data => {
+        const returned = Number(data.returned || 0);
+        const carried = Number(data.carried || 0);
+        if (returned < 0 || carried < 0 || Math.abs(returned + carried - balance) > 0.01) { toast(`Возврат и перенос должны составлять ${money(balance)}`); return false; }
+        if (carried > 0 && (!data.nextFrom || !data.nextTo || data.nextFrom > data.nextTo)) { toast('Проверьте следующий период'); return false; }
+        fund.closed = true;
+        fund.closing = { returned, carried, comment: data.comment.trim(), author: 'Бухгалтер', at: new Date().toLocaleString('ru-RU') };
+        if (carried > 0) {
+          state.accountableFunds.unshift({ id: nextId(), recipient: RECIPIENT, issuedAt: data.nextFrom, from: data.nextFrom, to: data.nextTo, issued: 0, carryIn: carried, allocations: {}, topUps: [], comment: `Перенос из подотчёта №${fund.id}`, createdBy: 'Система', createdAt: fund.closing.at, sourceFundId: fund.id, closed: false });
+        }
+        state.audit.unshift({ at: fund.closing.at, actor: 'Бухгалтер', text: `Подотчёт №${fund.id} закрыт: возвращено ${money(returned)}, перенесено ${money(carried)}` });
+      });
+  }
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-accountable-action]');
+    if (!button) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    ensureStore();
+    const action = button.dataset.accountableAction;
+    const fund = state.accountableFunds.find(item => item.id === Number(button.dataset.id));
+    if (action === 'issue' && currentRole === 'Бухгалтер') return issueFund();
+    if (!fund) return toast('Подотчёт не найден');
+    if (action === 'allocate' && currentRole === 'Бренд-шеф') return allocateFund(fund);
+    if (action === 'topup' && currentRole === 'Бухгалтер') return topUpFund(fund);
+    if (action === 'close' && currentRole === 'Бухгалтер') return closeFund(fund);
+    toast('Для этого действия переключите роль');
+  }, true);
+
+  ensureStore();
+  if (currentPage === 'advances' || currentRole === 'Бренд-шеф') render();
 })();
 
     </script>
