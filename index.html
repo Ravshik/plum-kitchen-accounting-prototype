@@ -836,12 +836,7 @@ const DEMO_STATE={mode:'demo',demoVersion:4,nextId:100,people:[
 const EMPTY_STATE={mode:'empty',nextId:1,people:[],shifts:[],adjustments:[],paymentPeriods:[],taxiExpenses:[],payments:[],advances:[],registries:[],audit:[]};
 const clone=x=>JSON.parse(JSON.stringify(x));
 const KITCHEN_WORKSHOPS=['Холодный цех','Горячий цех','Кондитерка'];
-const KITCHEN_POSITIONS=[
- 'Бренд-шеф','Креатив бренд-шеф','Операционный бренд-шеф','Операционный шеф-повар',
- 'Шеф-повар','Су-шеф','Су-шеф цеха','Су-шеф холодного цеха',
- 'Старший повар','Старший повар холодного цеха','Повар горячего цеха','Повар холодного цеха',
- 'Повар','Повар-кондитер','Кондитер','Повар-наставник','Менеджер по персоналу кухни'
-];
+const KITCHEN_POSITIONS=['Уборщик','Котломой','Повар'];
 const LOCATION_DIRECTORY={
  'Лофт 1–5':{activeInKitchen:true,lofts:['LOFT#1','CONTRABANDA (LOFT#5)','SMALL'],address:'Москва, ул. Ленинская Слобода, 26 (стр. 35 / стр. 23)',entity:'ООО «ДТК»',entities:['ООО «ДТК»','ООО «СВС»','ООО «ЛЭХ»','ООО «КЭП»','ИП Петросян Р.А.'],chefGroup:'Один шеф на группу'},
  'Лофт 2–3':{activeInKitchen:true,lofts:['LOFT#2','LOFT#3'],address:'Москва, ул. Ленинская Слобода, 26 (стр. 11 / стр. 15)',entity:'ООО «ДТК»',entities:['ООО «ДТК»','ООО «СВС»','ООО «ЛЭХ»','ООО «КЭП»'],chefGroup:'Один шеф на LOFT#2 и LOFT#3'},
@@ -880,7 +875,7 @@ const BASE_RATES={common:{'Бренд-шеф':1200,'Креатив бренд-ш
 function locationInfo(name){return LOCATIONS[name]||LOCATIONS['Березка']}
 function locationEntities(name){return locationInfo(name).entities||[]}
 const LEGACY_LOCATIONS={'Берёзка':'Березка','LOFT #4':'Лофт 4','LOFT #8 · Серп и Молот':'Серп (LOFT#8)','LOFT #2/3':'Лофт 2–3'};
-const LEGACY_POSITIONS={'Шеф-кондитер':'Повар-кондитер','Котломой':'Повар','Кладовщик':'Менеджер по персоналу кухни','Бригадир':'Старший повар','Уборщица':'Повар холодного цеха','Котломой / коренщица':'Повар горячего цеха','Повар персонала':'Повар-наставник'};
+const LEGACY_POSITIONS={'Шеф-кондитер':'Повар','Кладовщик':'Повар','Бригадир':'Повар','Уборщица':'Уборщик','Котломой / коренщица':'Котломой','Повар персонала':'Повар'};
 function normalizeLocation(value,fallback='Березка'){const next=LEGACY_LOCATIONS[value]||value;return LOCATIONS[next]?next:fallback}
 function normalizeEngagement(value){return value==='Наличка'?'Наличные':value||'Наличные'}
 function normalizeKitchenPosition(value){const next=LEGACY_POSITIONS[value]||value;return KITCHEN_POSITIONS.includes(next)?next:'Повар'}
