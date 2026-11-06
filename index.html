@@ -730,6 +730,8 @@ button,input,select,textarea{font:inherit;color:inherit} button{cursor:pointer}
 .accountable-title{align-items:flex-start}.accountable-title p{margin:7px 0 0;color:var(--muted);font-size:13px}.accountable-role-badge{padding:9px 13px;border-radius:12px;background:#eeeefe;color:var(--violet);font-weight:700}.accountable-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}.accountable-summary>div{min-height:90px;padding:17px 18px;background:#fff;border:1px solid var(--line);border-radius:15px;display:flex;flex-direction:column;gap:7px}.accountable-summary span{font-size:12px;color:#69799a}.accountable-summary b{font-size:22px;color:#13213f}.accountable-summary small{font-size:11px;color:#91a0bd}.accountable-summary .overspent{background:#fff7f7;border-color:#ffcaca}.accountable-summary .overspent b,.accountable-summary .overspent small{color:#d63a4e}.accountable-help{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:12px 15px;margin-bottom:13px;background:#f6f6ff;border:1px solid #e3e2ff;border-radius:13px;color:#69779a;font-size:12px}.accountable-help b{color:#3e49b7}.accountable-help span:before{content:'✓';margin-right:6px;color:#22a875;font-weight:800}.accountable-list{display:grid;gap:14px}.accountable-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.accountable-card.overspent{border-color:#ffb7c0;box-shadow:0 0 0 2px rgba(214,58,78,.04)}.accountable-card-head{display:flex;justify-content:space-between;gap:20px;padding:18px 20px 13px}.accountable-card-head h2{font-size:19px;margin:9px 0 5px}.accountable-card-head p{margin:0;color:#7b89a6;font-size:12px}.accountable-card-status{min-width:155px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px}.accountable-card-status>b{font-size:22px;color:#14223f}.accountable-card-status small{color:#8c9ab7;font-size:11px}.accountable-card-metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #edf0f7;border-bottom:1px solid #edf0f7;background:#fbfcff}.accountable-card-metrics>span{padding:14px 18px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #edf0f7}.accountable-card-metrics>span:last-child{border-right:0}.accountable-card-metrics small{font-size:11px;color:#8390aa}.accountable-card-metrics b{font-size:16px}.accountable-card-metrics em{font-style:normal;font-size:10px;color:#91a0b9}.accountable-actions{display:flex;align-items:center;gap:8px;padding:12px 18px}.accountable-actions>span{margin-left:auto;color:#8c99b4;font-size:11px}.accountable-location-table{border-top:1px solid #edf0f7}.accountable-location-head,.accountable-location-row>summary{display:grid;grid-template-columns:minmax(230px,1.4fr) repeat(4,minmax(105px,.65fr));align-items:center;gap:12px;padding:11px 18px}.accountable-location-head{background:#f7f8fc;color:#7483a2;font-size:11px;font-weight:700}.accountable-location-row{border-top:1px solid #edf0f7}.accountable-location-row>summary{cursor:pointer;list-style:none;font-size:12px}.accountable-location-row>summary::-webkit-details-marker{display:none}.accountable-location-row>summary:hover{background:#fafaff}.accountable-location-row>summary>span:first-child{display:flex;flex-direction:column;gap:3px}.accountable-location-row>summary small{color:#95a2bb;font-size:10px}.accountable-location-row.overspent>summary{background:#fff8f8}.accountable-expense-list{padding:0 18px 12px;background:#fbfcff}.accountable-expense-row{display:grid;grid-template-columns:minmax(230px,1.4fr) repeat(5,minmax(95px,.65fr));gap:12px;align-items:center;padding:11px 0;border-top:1px dashed #dfe4ef;font-size:11px}.accountable-expense-row>span{display:flex;flex-direction:column;gap:3px}.accountable-expense-row small{color:#8b99b5}.accountable-expense-row strong{color:#0a9f6d}.accountable-empty-expenses,.accountable-no-allocation{padding:24px;text-align:center;color:#8d9ab5;font-size:12px}.accountable-unallocated{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#fffbea;border-top:1px solid #f3e8b3}.accountable-unallocated span{display:flex;flex-direction:column;gap:3px}.accountable-unallocated small{color:#9a8d56;font-size:10px}.accountable-unallocated strong{color:#9c7610}.accountable-closing{display:flex;gap:22px;flex-wrap:wrap;padding:13px 18px;background:#f2faf6;border-top:1px solid #d7eee2;color:#60786d;font-size:11px}.accountable-modal-summary{padding:14px;border:1px solid #deddfd;border-radius:13px;background:#f6f6ff;display:grid;grid-template-columns:1fr auto;align-items:center}.accountable-modal-summary>b{font-size:20px;color:#3f43b8}.accountable-modal-summary small{grid-column:1/-1;margin-top:5px}.negative{color:#d63a4e!important}
 @media(max-width:1200px){.accountable-summary{grid-template-columns:repeat(2,1fr)}.accountable-card-metrics{grid-template-columns:repeat(2,1fr)}.accountable-location-head,.accountable-location-row>summary{grid-template-columns:minmax(180px,1.2fr) repeat(4,minmax(90px,.7fr))}.accountable-expense-row{grid-template-columns:1.4fr repeat(2,.7fr)}.accountable-expense-row>span:nth-child(n+4){display:none}}
 
+
+
   </style>
   <meta name="generator" content="PLUM standalone prototype">
 </head>
@@ -1941,12 +1943,30 @@ render();
           <th>К выплате</th>
           <th>Статус</th>
         </tr></thead>
-        <tbody>${rows.map(row => `<tr class="${row.salaryUnderNorm ? 'salary-under-norm' : ''}" data-ledger-row data-person-name="${row.p.name.toLowerCase()}">
+        <tbody>${rows.map(row => {
+          const calloutShifts = row.shifts.filter(shift => shift.type === 'Вызывной');
+          const onlyCallouts = row.shifts.length > 0 && calloutShifts.length === row.shifts.length;
+          const mixedShiftTypes = calloutShifts.length > 0 && !onlyCallouts;
+          const termsLabel = onlyCallouts
+            ? 'Наличные · Вызывной'
+            : mixedShiftTypes
+              ? `${employment(row.p)} · Штатные и вызывные смены`
+              : `${employment(row.p)} · ${row.p.type}`;
+          const rateLabel = onlyCallouts
+            ? 'По сменам'
+            : typeof salaryRateLabel === 'function' && salaryRateLabel(row.p)
+              ? salaryRateLabel(row.p)
+              : row.p.payType === 'Оклад'
+                ? 'Оклад'
+                : row.p.payType === 'Фиксированная сумма за неделю'
+                  ? 'За неделю'
+                  : money(row.p.rate);
+          return `<tr class="${row.salaryUnderNorm ? 'salary-under-norm' : ''}" data-ledger-row data-person-name="${row.p.name.toLowerCase()}">
           <td><input type="checkbox" data-pay-person="${row.p.id}" ${row.balance <= 0 || !row.ok || row.salaryPayable === false ? 'disabled' : ''}></td>
-          <td><b>${row.p.position}</b><div class="subline">${employment(row.p)} · ${row.p.type}</div></td>
+          <td><b>${row.p.position}</b><div class="subline">${termsLabel}</div></td>
           <td><button class="person-link" data-person="${row.p.id}">${row.p.name}</button>${row.p.source === 'accounting' ? '<div class="subline">Без табеля охраны</div>' : ''}</td>
           <td class="work-dates-cell">${workDatesCell(row.shifts)}</td>
-          <td>${typeof salaryRateLabel === 'function' && salaryRateLabel(row.p) ? salaryRateLabel(row.p) : row.p.payType === 'Оклад' ? 'Оклад' : row.p.payType === 'Фиксированная сумма за неделю' ? 'За неделю' : row.p.type === 'Вызывной' && employment(row.p) === 'Наличные' ? 'По сменам' : money(row.p.rate)}</td>
+          <td>${rateLabel}</td>
           <td><b>${money(row.base)}</b>${row.salaryUnderNorm ? `<div class="salary-progress"><span style="--salary-progress:${Math.min(100, row.salaryMonthHours / row.salaryNormHours * 100)}%"></span></div><div class="subline">${row.salaryMonthHours.toLocaleString('ru-RU')} из ${row.salaryNormHours} ч · не хватает ${row.salaryMissingHours.toLocaleString('ru-RU')} ч</div>` : ''}</td>
           <td><label class="inline-money"><input type="number" min="0" step="100" value="${row.taxi || ''}" placeholder="0" data-taxi-person="${row.p.id}"><span>₽</span></label></td>
           <td><button class="amount-detail ${row.bonus ? 'positive' : ''}" data-person="${row.p.id}">${row.bonus ? `+${money(row.bonus)}` : '—'}</button></td>
@@ -1961,7 +1981,8 @@ render();
           <td><b>${money(row.paid)}</b></td>
           <td><b class="${row.balance < 0 ? 'negative' : row.balance === 0 ? 'positive' : ''}">${money(row.balance)}</b></td>
           <td>${rowStatus(row)}</td>
-        </tr>`).join('')}</tbody>
+        </tr>`;
+        }).join('')}</tbody>
       </table>
     </div>`;
   };
@@ -2587,9 +2608,42 @@ render();
     ];
   }
 
-  function conditionsMarkup(personRecord) {
-    const payType = personRecord.payType || 'Почасовая';
-    let rate = personRecord.rate ? `${money(personRecord.rate)}/ч` : 'Не указана';
+  function periodTerms(personRecord, row) {
+    const shifts = row?.shifts || [];
+    const calloutShifts = shifts.filter(shift => shift.type === 'Вызывной');
+    const allCallout = shifts.length > 0 && calloutShifts.length === shifts.length;
+    const mixed = calloutShifts.length > 0 && !allCallout;
+    const engagements = [...new Set(shifts.map(shift => employment(shift)).filter(Boolean))];
+    const rates = [...new Set(shifts.map(shift => Number(rateOf(shift) || 0)).filter(rate => rate > 0))];
+
+    if (allCallout) {
+      return {
+        type: 'Вызывной',
+        engagement: 'Наличные',
+        payType: 'По сменам',
+        rate: rates.length === 1 ? `${money(rates[0])}/ч` : 'По каждой смене'
+      };
+    }
+    if (mixed) {
+      return {
+        type: 'Штатные и вызывные смены',
+        engagement: engagements.length === 1 ? engagements[0] : 'Смешанное',
+        payType: 'По условиям смен',
+        rate: rates.length === 1 ? `${money(rates[0])}/ч` : 'По каждой смене'
+      };
+    }
+    return {
+      type: personRecord.type,
+      engagement: employment(personRecord),
+      payType: personRecord.payType || 'Почасовая',
+      rate: personRecord.rate ? `${money(personRecord.rate)}/ч` : 'Не указана'
+    };
+  }
+
+  function conditionsMarkup(personRecord, row) {
+    const terms = periodTerms(personRecord, row);
+    const payType = terms.payType;
+    let rate = terms.rate;
     let extra = '';
     if (personRecord.payType === 'Индивидуальная окладная формула') {
       rate = money(personRecord.salaryBase || 123000);
@@ -2598,7 +2652,7 @@ render();
       rate = `${money(personRecord.monthlySalary || personRecord.rate || 0)} в месяц`;
       extra = `<div><span>Норма часов</span><b>${Number(personRecord.salaryNormHours || 165).toLocaleString('ru-RU')} ч</b></div>`;
     }
-    return `<div class="finance-conditions-grid"><div><span>Оформление</span><b>${employment(personRecord)}</b></div><div><span>Тип сотрудника</span><b>${personRecord.type}</b></div><div><span>Тип оплаты</span><b>${payType}</b></div><div><span>Ставка</span><b>${rate}</b></div>${extra}</div>`;
+    return `<div class="finance-conditions-grid"><div><span>Оформление за период</span><b>${terms.engagement}</b></div><div><span>Тип смен за период</span><b>${terms.type}</b></div><div><span>Тип оплаты</span><b>${payType}</b></div><div><span>Ставка</span><b>${rate}</b></div>${extra}</div>`;
   }
 
   function historyMarkup(history) {
@@ -2625,6 +2679,7 @@ render();
     const history = state.audit.filter(item => item.text.includes(personRecord.name));
     const latest = history[0];
     const rows = amountRows(row);
+    const terms = periodTerms(personRecord, row);
 
     drawer.classList.remove('security-person-drawer');
     drawer.classList.add('person-drawer', 'person-finance-drawer');
@@ -2633,7 +2688,7 @@ render();
         <div>
           <div class="eyebrow">Карточка сотрудника</div>
           <h2>${personRecord.name}</h2>
-          <div class="person-identity"><span>${personRecord.position}</span><span>${personRecord.type}</span><span>${employment(personRecord)}</span></div>
+          <div class="person-identity"><span>${personRecord.position}</span><span>${terms.type}</span><span>${terms.engagement}</span></div>
           <span class="finance-period">${icon('calendar')}<b>${currentPeriod}</b></span>
         </div>
         <div class="finance-head-actions">${status(headerStatus, headerTone)}<button class="icon-btn" data-close-drawer aria-label="Закрыть">×</button></div>
@@ -2660,7 +2715,7 @@ render();
             ${rows.map(item => `<div class="finance-accrual-row" role="row"><span class="finance-accrual-name"><i>${icon(item.icon)}</i><b>${item.title}</b></span><span>${item.period}</span><span><em class="finance-row-status ${item.tone}"><i></i>${item.status}</em></span><strong class="${item.amount < 0 ? 'negative' : item.amount > 0 ? 'positive' : ''}">${signedMoney(item.amount)}</strong></div>`).join('')}
           </div>
           <div class="finance-support-grid">
-            <article class="finance-support-card"><header><h3>${icon('settings')}Условия оплаты</h3><button data-person-card-tab-jump="conditions">Изменить условия</button></header>${conditionsMarkup(personRecord)}</article>
+            <article class="finance-support-card"><header><h3>${icon('settings')}Условия оплаты</h3><button data-person-card-tab-jump="conditions">Изменить условия</button></header>${conditionsMarkup(personRecord, row)}</article>
             <article class="finance-support-card"><header><h3>${icon('clock')}Последние изменения</h3><button data-person-card-tab-jump="history">Вся история →</button></header>${latest ? `<div class="finance-latest"><span class="history-dot"></span><div><time>${latest.at}</time><b>${latest.text}</b><small>${latest.actor}</small></div></div>` : '<div class="finance-empty small">Изменений пока нет</div>'}</article>
           </div>
         </section>
@@ -2672,7 +2727,7 @@ render();
 
         <section class="finance-tab-panel hidden" data-person-card-panel="conditions">
           <div class="finance-section-head"><div><h3>Условия оплаты</h3><p>Действующие условия сотрудника</p></div><button class="btn" data-action="edit-rate" data-id="${id}">Изменить условия</button></div>
-          ${conditionsMarkup(personRecord)}
+          ${conditionsMarkup(personRecord, row)}
           <div class="finance-note">Условия применяются к сменам выбранной должности внутри заданного периода. Смены до начала периода не меняются.</div>
         </section>
 
@@ -4177,8 +4232,16 @@ render();
 (function () {
   const ONBOARDING_STEPS = new Set(['position', 'employment', 'tk-settings']);
 
+  function hasOnlyCalloutShifts(employee) {
+    const shifts = state.shifts.filter(shift => shift.personId === employee.id);
+    return shifts.length > 0 && shifts.every(shift => shift.type === 'Вызывной');
+  }
+
   function personStep(employee) {
     if (!employee) return '';
+    // Вызывная смена оформляется и оплачивается шефом отдельно. Для сотрудника,
+    // у которого нет штатных смен, не запускаем оформление постоянной ставки.
+    if (hasOnlyCalloutShifts(employee)) return '';
     if (['rate', 'position', 'employment', 'tk-settings'].includes(employee.onboardingStep)) return employee.onboardingStep;
     const legacyPending = employee.source === 'security' && employee.registeredAtLocation && !employee.rateConfirmed && !(Number(employee.rate) > 0);
     return employee.needsAccountingReview || legacyPending ? 'rate' : '';
